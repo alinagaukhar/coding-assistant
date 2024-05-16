@@ -1,61 +1,92 @@
-# GPT based coding assistant
+# GPT-Based Coding Assistant
 
-Coding assistant is an Assistant powered by the Azure OpenAI's ChatGPT that aims to help users with coding challenges
-
-![UAIssistant scheme](readmedia/scheme_3.png)
+Coding Assistant is a tool powered by Azure OpenAI's ChatGPT designed to help users with coding challenges.
 
 ## Contents
 
-- [How to run](#how-to-run)
-  - [docker compose](#docker-compose)
-  - [local](#local)
-- [How to use](#how-to-use)
-- [DB Access](#db-access)
+- [How to Run](#how-to-run)
+  - [Using Docker Compose](#using-docker-compose)
+  - [Running Locally](#running-locally)
+- [How to Use](#how-to-use)
 
-## How to run
+## How to Run
 
-### Docker compose
+### Using Docker Compose
 
 #### Installations
 
-There are several ways to install docker:
+You need to install Docker to run this project. Here are some options:
 
 - [Docker](https://docs.docker.com/engine/install/)
-- [Rancher Desktop](https://rancherdesktop.io/) (good option for MacOS)
+- [Rancher Desktop](https://rancherdesktop.io/) (a good option for macOS)
 - [Podman](https://podman.io/)
 
-`docker-compose` is also required. Check if you have `docker-compose` with the command `docker-compose --version`. If you don't have it, please, following the guides: [for Linux](https://docs.docker.com/compose/install/linux/) and [for MacOS](https://www.ionos.com/digitalguide/server/configuration/docker-compose-on-mac/):
+`docker-compose` is also required. Verify its installation with `docker-compose --version`. If not installed, follow these guides: [Linux](https://docs.docker.com/compose/install/linux/) and [macOS](https://www.ionos.com/digitalguide/server/configuration/docker-compose-on-mac/).
 
-#### Run with docker compose
+#### Running with Docker Compose
 
-1. Create `.env` file and copy the content of `.env.docker.example` to `.env`: `cp .env.docker.example .env`. You can use your DB env variables.
-2. Set your Azure OpenAI API KEY and endpoint:
+1. Create a `.env` file in the `coding-assistant-BE` folder by copying the contents of `.env.docker.example`:
 
-- AZURE_OPENAI_API_KEY=
-- AZURE_OPENAI_ENDPOINT=
-- AZURE_OPENAI_API_VERSION=
+   ```bash
+   cp coding-assistant-BE/.env.docker.example coding-assistant-BE/.env
+   ```
 
-3. Run the docker compose:
+   Customize your DB environment variables as needed.
 
-```
-docker-compose up
-```
+2. Set your Azure OpenAI API Key and endpoint in the `.env` file:
 
-This will initialize postgresql database, backend service and frontend. Backend should be accessible on http://0.0.0.0:8000/. Frontend should be running on http://localhost:3000/.
+   ```plaintext
+   AZURE_OPENAI_API_KEY=your_api_key
+   AZURE_OPENAI_ENDPOINT=your_endpoint
+   AZURE_OPENAI_API_VERSION=your_api_version
+   ```
 
-To remove the created containers:
+3. Run Docker Compose:
 
-```
-docker-compose down
-```
+   ```bash
+   docker-compose up
+   ```
 
-### Run locally
+   This initializes a PostgreSQL database, backend service, and frontend. The backend will be accessible at [http://0.0.0.0:8000/](http://0.0.0.0:8000/) and the frontend at [http://localhost:3000/](http://localhost:3000/).
 
-Please, follow the instructions in coding-assistant-BE and coding-assistant-FE README files to run backend and frontend servers respectively. If everything is done sucessfully, you should have similar result as with docker compose.
+4. To stop and remove the created containers, use:
 
-## How to use
+   ```bash
+   docker-compose down
+   ```
+
+### Running Locally
+
+Follow the instructions in the `coding-assistant-BE` and `coding-assistant-FE` README files to run the backend and frontend servers respectively. If everything is set up correctly, you should have a similar result to using Docker Compose.
+
+## How to Use
 
 ![Assistant UI](media/assistant.png)
 
-You can ask the assistant about simple coding challenges using the web interface. You will receive the answer with code snippets and comments. The assistant will not answer questions not related to programming requests.
-You can have multiple chats (threads) which are independant of each other. You can delete and rename chats as you wish. Everything is going to be persisted.
+You can ask the assistant about coding challenges using the web interface. You will receive answers with code snippets and comments. The assistant is designed to answer programming-related questions only.
+
+Features:
+
+- Multiple chat threads which are independent of each other.
+- Ability to delete and rename chats.
+- All data is persisted.
+
+## Contributing
+
+If you'd like to contribute, please follow these steps:
+
+1. Fork the repository.
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`).
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`).
+4. Push to the branch (`git push origin feature/AmazingFeature`).
+5. Open a pull request.
+
+## License
+
+MIT License
+
+## Contact
+
+For any questions or feedback, please contact:
+
+Gaukhar Alina - [gaukhar112200@gmail.com](mailto:gaukhar112200@gmail.com)
