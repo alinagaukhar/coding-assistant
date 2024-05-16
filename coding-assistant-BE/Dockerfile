@@ -4,7 +4,7 @@ RUN pip install poetry==1.7.1
 
 WORKDIR /backend
 
-COPY pyproject.toml poetry.lock .env ./
+COPY pyproject.toml poetry.lock ./
 COPY coding_assistant ./coding_assistant
 
 RUN touch README.md

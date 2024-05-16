@@ -25,10 +25,10 @@ You need to install Docker to run this project. Here are some options:
 
 #### Running with Docker Compose
 
-1. Create a `.env` file in the `coding-assistant-BE` folder by copying the contents of `.env.docker.example`:
+1. Create a `.env` file by copying the contents of `.env.docker.example`:
 
    ```bash
-   cp coding-assistant-BE/.env.docker.example coding-assistant-BE/.env
+   cp .env.docker.example .env
    ```
 
    Customize your DB environment variables as needed.

@@ -17,7 +17,7 @@ services:
       context: ./coding-assistant-BE/
       dockerfile: ./Dockerfile
     env_file:
-      - coding-assistant-BE/.env
+      - .env
     volumes:
       - .:/app
     ports:
@@ -29,12 +29,10 @@ services:
 
   db:
     image: postgres
-    env_file:
-      - coding-assistant-BE/.env
     environment:
-      - POSTGRES_DB=DB_DATABASE
-      - POSTGRES_USER=DB_USER
-      - POSTGRES_PASSWORD=DB_PASSWORD
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     volumes:
       - postgres_data:/var/lib/postgresql/data/
       - ./coding-assistant-BE/postgres:/docker-entrypoint-initdb.d
