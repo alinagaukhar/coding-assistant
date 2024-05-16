@@ -1,0 +1,48 @@
+version: "3.3"
+
+services:
+  fe:
+    build:
+      context: ./coding-assistant-FE/
+      dockerfile: ./Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - be
+    networks:
+      - backend
+
+  be:
+    build:
+      context: ./coding-assistant-BE/
+      dockerfile: ./Dockerfile
+    env_file:
+      - coding-assistant-BE/.env
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    networks:
+      - backend
+
+  db:
+    image: postgres
+    env_file:
+      - coding-assistant-BE/.env
+    environment:
+      - POSTGRES_DB=DB_DATABASE
+      - POSTGRES_USER=DB_USER
+      - POSTGRES_PASSWORD=DB_PASSWORD
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+      - ./coding-assistant-BE/postgres:/docker-entrypoint-initdb.d
+    networks:
+      - backend
+
+networks:
+  backend:
+
+volumes:
+  postgres_data:
