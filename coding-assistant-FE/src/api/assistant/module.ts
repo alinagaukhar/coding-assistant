@@ -113,7 +113,6 @@ const getThreads = createAsyncThunk(
   `${PREFIX}/getThreads`,
   ({ assistant_id }: ThreadsGetRequest, { rejectWithValue }) => {
     const assistantApiClient = new AssistantApiClient().getInstance();
-    console.log(assistant_id);
     return assistantApiClient
       .get(`/${assistant_id}/threads`)
       .then(({ data }: { data: ThreadsGetResponse }): ThreadsGetResponse => data)
@@ -250,7 +249,6 @@ export const assistantSlice = createSlice({
       getAssistant.fulfilled.type,
       (state: AssistantState, action: PayloadAction<AssistantGetResponse>) => {
         const { assistant } = action.payload;
-        console.log(action.payload);
         state.assistant = assistant;
         handleAsyncThunkFulfilledStatus(state.assistantGet);
       }

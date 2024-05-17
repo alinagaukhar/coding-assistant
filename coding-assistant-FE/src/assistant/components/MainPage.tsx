@@ -17,7 +17,6 @@ const MainPage = () => {
 
   useEffect(() => {
     if (!_.isNil(assistant)) {
-      console.log(assistant);
       dispatch(assistantActions.getThreads({ assistant_id: assistant.id }));
     }
   }, [assistant]);

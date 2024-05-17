@@ -30,7 +30,6 @@ const InputPanel: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   const handleSendMessage = async () => {
-    console.log(assistantId);
     if (_.isNil(assistantId)) {
       AppToaster.show({ message: 'Something went wrong. Please try again later.', intent: 'danger', timeout: 8000 });
       return;
